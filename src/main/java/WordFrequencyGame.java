@@ -14,7 +14,7 @@ public class WordFrequencyGame {
             try {
 
                 //split the input string with 1 to n pieces of spaces
-                String[] arr = sentence.split("\\s+");
+                String[] arr = sentence.split(BLANK_SPACE);
 
                 List<Input> inputList = new ArrayList<>();
                 for (String s : arr) {
