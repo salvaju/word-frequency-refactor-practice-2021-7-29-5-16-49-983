@@ -21,20 +21,6 @@ public class WordFrequencyGame {
         }
     }
 
-    private String mergeWordInfos(List<WordInfo> wordInfoList) {
-        return wordInfoList.stream()
-                .map(this::generateWordWithWordCount)
-                .collect(Collectors.joining(NEW_LINE));
-    }
-
-    private String generateWordWithWordCount(WordInfo wordInfo) {
-        return wordInfo.getWord() + BLANK_SPACE + wordInfo.getWordCount();
-    }
-
-    private void sortWordInfo(List<WordInfo> wordInfoList) {
-        wordInfoList.sort(Comparator.comparingInt(WordInfo::getWordCount).reversed());
-    }
-
     private List<WordInfo> calculateWordFrequency(String sentence) {
         List<String> words = Arrays.asList(sentence.split(WHITE_SPACES));
         List<String> distinctWords = words.stream().distinct().collect(Collectors.toList());
@@ -50,5 +36,19 @@ public class WordFrequencyGame {
         });
 
         return wordInfos;
+    }
+
+    private void sortWordInfo(List<WordInfo> wordInfoList) {
+        wordInfoList.sort(Comparator.comparingInt(WordInfo::getWordCount).reversed());
+    }
+
+    private String mergeWordInfos(List<WordInfo> wordInfoList) {
+        return wordInfoList.stream()
+                .map(this::generateWordWithWordCount)
+                .collect(Collectors.joining(NEW_LINE));
+    }
+
+    private String generateWordWithWordCount(WordInfo wordInfo) {
+        return wordInfo.getWord() + BLANK_SPACE + wordInfo.getWordCount();
     }
 }
