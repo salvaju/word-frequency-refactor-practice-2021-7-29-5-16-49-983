@@ -3,7 +3,7 @@ import java.util.stream.Collectors;
 
 public class WordFrequencyGame {
 
-    public static final String BLANK_SPACE = "\\s+";
+    public static final String WHITE_SPACES = "\\s+";
     public static final String NEW_LINE = "\n";
 
     public String getResult(String sentence) {
@@ -41,7 +41,7 @@ public class WordFrequencyGame {
     }
 
     private List<WordInfo> calculateWordFrequency (String sentence) {
-        List<String> words = Arrays.asList(sentence.split(BLANK_SPACE));
+        List<String> words = Arrays.asList(sentence.split(WHITE_SPACES));
         List<String> distinctWords = words.stream().distinct().collect(Collectors.toList());
 
         List<WordInfo> wordInfos = new ArrayList<>();
@@ -58,6 +58,6 @@ public class WordFrequencyGame {
     }
 
     private boolean isSingleWord(String sentence) {
-        return 1 == sentence.split(BLANK_SPACE).length;
+        return 1 == sentence.split(WHITE_SPACES).length;
     }
 }
