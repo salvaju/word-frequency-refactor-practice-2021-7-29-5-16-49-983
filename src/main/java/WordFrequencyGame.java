@@ -4,6 +4,7 @@ import java.util.stream.Collectors;
 public class WordFrequencyGame {
 
     public static final String BLANK_SPACE = "\\s+";
+    public static final String NEW_LINE = "\n";
 
     public String getResult(String sentence) {
 
@@ -28,7 +29,7 @@ public class WordFrequencyGame {
     private String mergeWordInfos(List<WordInfo> wordInfoList) {
         return wordInfoList.stream()
                 .map(this::generateWordWithWordCount)
-                .collect(Collectors.joining("\n"));
+                .collect(Collectors.joining(NEW_LINE));
     }
 
     private String generateWordWithWordCount(WordInfo wordInfo) {
