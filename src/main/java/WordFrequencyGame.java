@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -10,7 +11,7 @@ public class WordFrequencyGame {
     public static final String BLANK_SPACE = " ";
 
     public String getResult(String sentence) {
-        
+
         try {
             List<WordInfo> wordInfoList = calculateWordFrequency(sentence);
             sortWordInfo(wordInfoList);
@@ -31,7 +32,7 @@ public class WordFrequencyGame {
     }
 
     private void sortWordInfo(List<WordInfo> wordInfoList) {
-        wordInfoList.sort((firstWordInfo, secondWordInfo) -> secondWordInfo.getWordCount() - firstWordInfo.getWordCount());
+        wordInfoList.sort(Comparator.comparingInt(WordInfo::getWordCount).reversed());
     }
 
     private List<WordInfo> calculateWordFrequency(String sentence) {
