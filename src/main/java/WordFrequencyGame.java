@@ -13,7 +13,6 @@ public class WordFrequencyGame {
         } else {
 
             try {
-                //split the input string with 1 to n pieces of spaces
                 List<WordInfo> wordInfoList = calculateWordFrequency(sentence);
                 sortWordInfo(wordInfoList);
 
