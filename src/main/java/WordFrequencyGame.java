@@ -15,22 +15,24 @@ public class WordFrequencyGame {
             try {
                 //split the input string with 1 to n pieces of spaces
                 List<WordInfo> wordInfoList = calculateWordFrequency(sentence);
-
-                //get the map for the next step of sizing the same word
                 sortWordInfo(wordInfoList);
 
-                StringJoiner joiner = new StringJoiner("\n");
-                for (WordInfo w : wordInfoList) {
-                    String s = w.getWord() + " " + w.getWordCount();
-                    joiner.add(s);
-                }
-                return joiner.toString();
+                return mergeWordInfos(wordInfoList);
             } catch (Exception e) {
 
 
                 return "Calculate Error";
             }
         }
+    }
+
+    private String mergeWordInfos(List<WordInfo> wordInfoList) {
+        StringJoiner joiner = new StringJoiner("\n");
+        for (WordInfo w : wordInfoList) {
+            String s = w.getWord() + " " + w.getWordCount();
+            joiner.add(s);
+        }
+        return joiner.toString();
     }
 
     private void sortWordInfo(List<WordInfo> wordInfoList) {
