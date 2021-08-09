@@ -7,7 +7,7 @@ public class WordFrequencyGame {
     public String getResult(String sentence) {
 
 
-        if (sentence.split(BLANK_SPACE).length == 1) {
+        if (1 == sentence.split(BLANK_SPACE).length) {
             return sentence + " 1";
         } else {
 
