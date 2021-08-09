@@ -16,7 +16,7 @@ public class WordFrequencyGame {
                 List<WordInfo> wordInfoList = calculateWordFrequency(sentence);
                 sortWordInfo(wordInfoList);
 
-                return mergeWordInfosTemporary(wordInfoList);
+                return mergeWordInfos(wordInfoList);
             } catch (Exception e) {
 
 
@@ -24,8 +24,8 @@ public class WordFrequencyGame {
             }
         }
     }
-    
-    private String mergeWordInfosTemporary(List<WordInfo> wordInfoList) {
+
+    private String mergeWordInfos(List<WordInfo> wordInfoList) {
         return wordInfoList.stream()
                 .map(this::generateWordWithWordCount)
                 .collect(Collectors.joining("\n"));
