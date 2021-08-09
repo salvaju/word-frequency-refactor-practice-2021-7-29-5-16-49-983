@@ -10,9 +10,7 @@ public class WordFrequencyGame {
     public String getResult(String sentence) {
 
 
-        if (isSingleWord(sentence)) {
-            return sentence + " 1";
-        } else {
+
 
             try {
                 List<WordInfo> wordInfoList = calculateWordFrequency(sentence);
@@ -25,7 +23,7 @@ public class WordFrequencyGame {
                 return "Calculate Error";
             }
         }
-    }
+
 
     private String mergeWordInfos(List<WordInfo> wordInfoList) {
         return wordInfoList.stream()
@@ -56,9 +54,5 @@ public class WordFrequencyGame {
         });
 
         return wordInfos;
-    }
-
-    private boolean isSingleWord(String sentence) {
-        return 1 == sentence.split(WHITE_SPACES).length;
     }
 }
