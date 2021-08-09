@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class WordFrequencyGame {
 
@@ -12,10 +13,10 @@ public class WordFrequencyGame {
         } else {
 
             try {
-
                 //split the input string with 1 to n pieces of spaces
                 List<WordInfo> wordInfoList = calculateWordFrequency(sentence);
 
+                //get the map for the next step of sizing the same word
                 wordInfoList.sort((w1, w2) -> w2.getWordCount() - w1.getWordCount());
 
                 StringJoiner joiner = new StringJoiner("\n");
@@ -32,25 +33,21 @@ public class WordFrequencyGame {
         }
     }
 
-    private List<WordInfo> calculateWordFrequency(String sentence) {
-        String[] words = sentence.split(BLANK_SPACE);
+    private List<WordInfo> calculateWordFrequency (String sentence) {
+        List<String> words = Arrays.asList(sentence.split(BLANK_SPACE));
+        List<String> distinctWords = words.stream().distinct().collect(Collectors.toList());
 
-        List<WordInfo> wordInfoList = new ArrayList<>();
-        for (String word : words) {
-            WordInfo wordInfo = new WordInfo(word, 1);
-            wordInfoList.add(wordInfo);
-        }
+        List<WordInfo> wordInfos = new ArrayList<>();
 
-        //get the map for the next step of sizing the same word
-        Map<String, List<WordInfo>> map = getListMap(wordInfoList);
+        distinctWords.forEach(distinctWord -> {
+            int count = (int) words.stream()
+                    .filter(word -> word.equals(distinctWord))
+                    .count();
 
-        List<WordInfo> list = new ArrayList<>();
-        for (Map.Entry<String, List<WordInfo>> entry : map.entrySet()) {
-            WordInfo wordInfo = new WordInfo(entry.getKey(), entry.getValue().size());
-            list.add(wordInfo);
-        }
-        wordInfoList = list;
-        return wordInfoList;
+            wordInfos.add(new WordInfo(distinctWord, count));
+        });
+
+        return wordInfos;
     }
 
     private boolean isSingleWord(String sentence) {
