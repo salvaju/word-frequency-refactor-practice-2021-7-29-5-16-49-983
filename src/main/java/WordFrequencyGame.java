@@ -28,10 +28,14 @@ public class WordFrequencyGame {
     private String mergeWordInfos(List<WordInfo> wordInfoList) {
         StringJoiner result = new StringJoiner("\n");
         for (WordInfo wordInfo : wordInfoList) {
-            String s = wordInfo.getWord() + " " + wordInfo.getWordCount();
+            String s = generateWordWithWordCount(wordInfo);
             result.add(s);
         }
         return result.toString();
+    }
+
+    private String generateWordWithWordCount(WordInfo wordInfo) {
+        return wordInfo.getWord() + " " + wordInfo.getWordCount();
     }
 
     private void sortWordInfo(List<WordInfo> wordInfoList) {
