@@ -53,24 +53,4 @@ public class WordFrequencyGame {
     private boolean isSingleWord(String sentence) {
         return 1 == sentence.split(BLANK_SPACE).length;
     }
-
-
-    private Map<String, List<WordInfo>> getListMap(List<WordInfo> wordInfoList) {
-        Map<String, List<WordInfo>> map = new HashMap<>();
-        for (WordInfo wordInfo : wordInfoList) {
-//       map.computeIfAbsent(input.getValue(), k -> new ArrayList<>()).add(input);
-            if (!map.containsKey(wordInfo.getWord())) {
-                ArrayList arr = new ArrayList<>();
-                arr.add(wordInfo);
-                map.put(wordInfo.getWord(), arr);
-            } else {
-                map.get(wordInfo.getWord()).add(wordInfo);
-            }
-        }
-
-
-        return map;
-    }
-
-
 }
