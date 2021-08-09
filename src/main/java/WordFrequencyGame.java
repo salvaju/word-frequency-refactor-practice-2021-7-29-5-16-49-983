@@ -1,4 +1,6 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class WordFrequencyGame {
@@ -8,22 +10,15 @@ public class WordFrequencyGame {
     public static final String BLANK_SPACE = " ";
 
     public String getResult(String sentence) {
-
-
-
-
-            try {
-                List<WordInfo> wordInfoList = calculateWordFrequency(sentence);
-                sortWordInfo(wordInfoList);
-
-                return mergeWordInfos(wordInfoList);
-            } catch (Exception e) {
-
-
-                return "Calculate Error";
-            }
+        
+        try {
+            List<WordInfo> wordInfoList = calculateWordFrequency(sentence);
+            sortWordInfo(wordInfoList);
+            return mergeWordInfos(wordInfoList);
+        } catch (Exception e) {
+            return "Calculate Error";
         }
-
+    }
 
     private String mergeWordInfos(List<WordInfo> wordInfoList) {
         return wordInfoList.stream()
@@ -39,7 +34,7 @@ public class WordFrequencyGame {
         wordInfoList.sort((firstWordInfo, secondWordInfo) -> secondWordInfo.getWordCount() - firstWordInfo.getWordCount());
     }
 
-    private List<WordInfo> calculateWordFrequency (String sentence) {
+    private List<WordInfo> calculateWordFrequency(String sentence) {
         List<String> words = Arrays.asList(sentence.split(WHITE_SPACES));
         List<String> distinctWords = words.stream().distinct().collect(Collectors.toList());
 
