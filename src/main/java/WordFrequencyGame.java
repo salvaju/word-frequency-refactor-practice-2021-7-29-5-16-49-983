@@ -5,6 +5,7 @@ public class WordFrequencyGame {
 
     public static final String WHITE_SPACES = "\\s+";
     public static final String NEW_LINE = "\n";
+    public static final String BLANK_SPACE = " ";
 
     public String getResult(String sentence) {
 
@@ -33,7 +34,7 @@ public class WordFrequencyGame {
     }
 
     private String generateWordWithWordCount(WordInfo wordInfo) {
-        return wordInfo.getWord() + " " + wordInfo.getWordCount();
+        return wordInfo.getWord() + BLANK_SPACE + wordInfo.getWordCount();
     }
 
     private void sortWordInfo(List<WordInfo> wordInfoList) {
