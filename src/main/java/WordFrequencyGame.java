@@ -24,15 +24,7 @@ public class WordFrequencyGame {
             }
         }
     }
-
-    private String mergeWordInfos(List<WordInfo> wordInfoList) {
-        StringJoiner result = new StringJoiner("\n");
-        for (WordInfo wordInfo : wordInfoList) {
-            result.add(generateWordWithWordCount(wordInfo));
-        }
-        return result.toString();
-    }
-
+    
     private String mergeWordInfosTemporary(List<WordInfo> wordInfoList) {
         return wordInfoList.stream()
                 .map(this::generateWordWithWordCount)
