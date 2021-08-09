@@ -36,7 +36,7 @@ public class WordFrequencyGame {
 
                 StringJoiner joiner = new StringJoiner("\n");
                 for (WordInfo w : wordInfoList) {
-                    String s = w.getValue() + " " + w.getWordCount();
+                    String s = w.getWord() + " " + w.getWordCount();
                     joiner.add(s);
                 }
                 return joiner.toString();
@@ -57,12 +57,12 @@ public class WordFrequencyGame {
         Map<String, List<WordInfo>> map = new HashMap<>();
         for (WordInfo wordInfo : wordInfoList) {
 //       map.computeIfAbsent(input.getValue(), k -> new ArrayList<>()).add(input);
-            if (!map.containsKey(wordInfo.getValue())) {
+            if (!map.containsKey(wordInfo.getWord())) {
                 ArrayList arr = new ArrayList<>();
                 arr.add(wordInfo);
-                map.put(wordInfo.getValue(), arr);
+                map.put(wordInfo.getWord(), arr);
             } else {
-                map.get(wordInfo.getValue()).add(wordInfo);
+                map.get(wordInfo.getWord()).add(wordInfo);
             }
         }
 
